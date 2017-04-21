@@ -17,7 +17,7 @@ describe('Game', function() {
     expect(game.player1.symbol).toEqual('X');
   });
 
-  it("player1 is initialized with 'X'", function() {
+  it("player2 is initialized with 'O'", function() {
     expect(game.player2.symbol).toEqual('O');
   });
 
