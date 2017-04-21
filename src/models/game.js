@@ -1,6 +1,7 @@
 (function(exports) {
 
-  function Game() {
+  function Game(player1 = new Player()) {
+    this.player1 = player1;
   }
 
   exports.Game = Game;
