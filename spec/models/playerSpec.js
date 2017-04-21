@@ -5,17 +5,21 @@ describe('Player', function() {
     expect(player).toBeDefined();
   });
 
-  it("player can be initialized with 'X'", function() {
+  it("can be initialized with 'X'", function() {
     var player = new Player('X');
     expect(player.symbol).toEqual('X');
   });
 
-  it("player can be initialized with 'O'", function() {
+  it("can be initialized with 'O'", function() {
     var player = new Player('O');
     expect(player.symbol).toEqual('O');
   });
 
-  it("is initialized with currentTurn variable", function(){
+  it("is initialized with a 'movesMade' variable", function() {
+    expect(player.movesMade).toBeDefined();
+  });
+
+  it("is initialized with 'currentTurn' variable", function(){
     expect(player.currentTurn).toBeDefined();
   });
 
