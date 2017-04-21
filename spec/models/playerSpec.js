@@ -4,4 +4,9 @@ describe('Player', function() {
   it("exists", function() {
     expect(player).toBeDefined();
   });
+
+  it("player1 is initialized with 'X'", function() {
+    var player = new Player('X');
+    expect(player.symbol).toEqual('X');
+  });
 });

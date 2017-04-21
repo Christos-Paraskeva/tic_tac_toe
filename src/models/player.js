@@ -1,6 +1,7 @@
 (function(exports) {
 
-  function Player() {
+  function Player(symbol) {
+    this.symbol = symbol;
   }
 
   exports.Player = Player;
