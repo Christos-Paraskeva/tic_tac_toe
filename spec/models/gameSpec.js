@@ -46,7 +46,7 @@ describe('Game', function() {
   });
 
   describe('When making a move', function() {
-    // var game = new Game();
+
     it("it associates that move with the specific player", function() {
       game.makeMove('M2');
       expect(game.player1.movesMade).toEqual(['M2']);
@@ -56,5 +56,12 @@ describe('Game', function() {
     //     game.makeMove();
     //   expect(game.this.grid).toBeDefined();
     // });
+
+    describe('Edge cases', function() {
+
+      it("throws error if make an invalid move", function() {
+        expect(function() {game.makeMove('X2')}).toThrow("Invalid Move");
+      });
+    });
   });
 });

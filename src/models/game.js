@@ -14,6 +14,9 @@
     if (this._isValidMove(move) === true) {
       this.player1.movesMade.push(move);
     }
+    else {
+      throw "Invalid Move";
+    }
   };
 
   Game.prototype._isValidMove = function(move) {
