@@ -27,10 +27,12 @@ describe('Game', function() {
       expect(game.grid instanceof Grid).toBe(true);
     });
 
+
     describe('When starting a new game', function() {
 
       function PlayerDouble() {
         this.currentTurn = false;
+        this.movesMade = [];
       }
 
       var game = new Game(player1 = new PlayerDouble('X'), player2 = new PlayerDouble('O') );
@@ -42,15 +44,17 @@ describe('Game', function() {
       });
     });
   });
+
+  describe('When making a move', function() {
+    // var game = new Game();
+    it("it associates that move with the specific player", function() {
+      game.makeMove('M2');
+      expect(game.player1.movesMade).toEqual(['M2']);
+    });
+
+    // it("makes that move unavailable in the grid", function() {
+    //     game.makeMove();
+    //   expect(game.this.grid).toBeDefined();
+    // });
+  });
 });
-
-
-
-  // describe('When making a move', function() {
-  //   // var game = new Game();
-  //
-  //   it("makes that move unavailable in the grid", function() {
-  //       game.makeMove();
-  //     expect(game.this.grid).toBeDefined();
-  //   });
-  // });

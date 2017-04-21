@@ -10,5 +10,20 @@
     this.player1.currentTurn = true;
   };
 
+  Game.prototype.makeMove = function(move) {
+    if (this._isValidMove(move) === true) {
+      this.player1.movesMade.push(move);
+    }
+  };
+
+  Game.prototype._isValidMove = function(move) {
+
+    for (var i=0, iLen=this.grid.structure.length; i<iLen; i++) {
+      if (this.grid.structure[i] === move) {
+        return true;
+      }
+    }
+  };
+
   exports.Game = Game;
 })(this);
