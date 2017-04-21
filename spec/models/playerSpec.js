@@ -5,7 +5,7 @@ describe('Player', function() {
     expect(player).toBeDefined();
   });
 
-  it("player1 can be initialized with 'X'", function() {
+  it("player can be initialized with 'X'", function() {
     var player = new Player('X');
     expect(player.symbol).toEqual('X');
   });
