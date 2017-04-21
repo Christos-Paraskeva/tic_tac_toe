@@ -20,4 +20,17 @@ describe('Game', function() {
   it("player1 is initialized with 'X'", function() {
     expect(game.player2.symbol).toEqual('O');
   });
+
+  it("recieves a grid", function(){
+    expect(game.grid instanceof Grid).toBe(true);
+  });
+
+  // describe('When making a move', function() {
+  //   // var game = new Game();
+  //
+  //   it("makes that move unavailable in the grid", function() {
+  //       game.makeMove();
+  //     expect(game.this.grid).toBeDefined();
+  //   });
+  // });
 });
