@@ -6,5 +6,9 @@
     this.grid = grid;
   }
 
+  Game.prototype.startGame = function() {
+    this.player1.currentTurn = true;
+  };
+
   exports.Game = Game;
 })(this);
