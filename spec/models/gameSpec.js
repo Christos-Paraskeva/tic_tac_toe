@@ -32,6 +32,10 @@ describe('Game', function() {
       expect(game.grid instanceof Grid).toBe(true);
     });
 
+    it("recieves winning combinations rule", function(){
+      expect(game.winningCombinationRules).toEqual(winningCombinationRules());
+    });
+
 
     describe('When starting a new game', function() {
 

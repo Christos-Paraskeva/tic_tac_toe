@@ -1,18 +1,11 @@
 (function(exports) {
 
-  function Game(playerOne = new Player('X'), playerTwo = new Player('O'), grid = new Grid()) {
+  function Game(playerOne = new Player('X'), playerTwo = new Player('O'), grid = new Grid(), rule = new Rule()) {
     this.playerOne = playerOne;
     this.playerTwo = playerTwo;
     this.grid = grid;
     this.currentMoveIndex;
-    this.winningCombinationRules = [['L1', 'M2', 'M3'],
-                                    ['L2', 'M2', 'R3'],
-                                    ['L3', 'M3', 'R3'],
-                                    ['L1', 'L2', 'L3'],
-                                    ['M1', 'M2', 'M3'],
-                                    ['R1', 'R2', 'R3'],
-                                    ['L1', 'M2', 'R3'],
-                                    ['L3', 'M2', 'R1']];
+    this.winningCombinationRules = rule.winningCombinationRules;
   }
 
   Game.prototype.startGame = function() {
