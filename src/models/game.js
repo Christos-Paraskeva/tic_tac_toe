@@ -49,17 +49,14 @@
 
   Game.prototype._isWinner = function() {
     for (var i=0, iLen=this.winningCombinationRules.length; i<iLen; i++) {
-      if (this.winningCombinationRules[i].sort() === this.player1.movesMade.sort()); {
-        console.log('winningcomborules', this.winningCombinationRules[i].sort())
-        console.log('movesmade', this.player1.movesMade.sort())
-        console.log('true/false',this.winningCombinationRules[i].sort() === this.player1.movesMade.sort())
+      if ((this.winningCombinationRules[i].sort().join() === this.player1.movesMade.sort().join()) === true) {
         this._endGame();
       }
     }
   };
 
   Game.prototype._endGame = function() {
-    // alert("You are the winner!");
+    alert("You are the winner!");
   };
 
   exports.Game = Game;
