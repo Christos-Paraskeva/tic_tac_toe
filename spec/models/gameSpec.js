@@ -115,14 +115,20 @@ describe('Game', function() {
       expect(window.alert).toHaveBeenCalledWith('Player Two is the winner!');
     });
 
-    it("game restarts after declaring a winner", function(){
-      spyOn(game, 'resetGame');
+    it("game ends after declaring a winner", function(){
+      spyOn(game, 'endGame');
       game.makeMove('L1');
       game.makeMove('R2');
       game.makeMove('M2');
       game.makeMove('R1');
       game.makeMove('R3');
-      expect(game.resetGame).toHaveBeenCalled();
+      expect(game.endGame).toHaveBeenCalled();
+    });
+
+    it("stops player making a move after game has ended", function(){
+      game.endGame();
+      expect(game.playerOne.currentTurn).toEqual(false);
+      expect(game.playerTwo.currentTurn).toEqual(false);
     });
   });
 });

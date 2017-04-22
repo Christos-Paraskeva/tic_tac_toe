@@ -32,8 +32,8 @@
     }
   };
 
-  Game.prototype.resetGame = function () {
-
+  Game.prototype.endGame = function () {
+    this.playerOne.currentTurn = false; this.playerTwo.currentTurn = false;
   };
 
   Game.prototype._whichPlayerMove = function () {
@@ -89,7 +89,7 @@
       alert("Player Two is the winner!");
     }
 
-    this.resetGame();
+    this.endGame();
   };
 
   exports.Game = Game;
