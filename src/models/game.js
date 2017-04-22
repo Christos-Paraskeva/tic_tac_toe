@@ -14,7 +14,7 @@
   Game.prototype.makeMove = function(move) {
     if (this._isValidMove(move) === true) {
       this._storeMove(this.player1, move);
-      this.grid.structure.splice(this.currentMoveIndex, 1, 'X');
+      this._markChosenMovePosition(this.currentMoveIndex, this.player1.symbol);
       }
     else {
       throw "Invalid Move";
@@ -32,6 +32,10 @@
 
   Game.prototype._storeMove = function(currentPlayer, move) {
     currentPlayer.movesMade.push(move);
+  };
+
+  Game.prototype._markChosenMovePosition = function(indexPosition, playerSymbol) {
+    this.grid.structure.splice(indexPosition, 1, playerSymbol);
   };
 
   exports.Game = Game;
