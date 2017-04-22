@@ -4,5 +4,9 @@
     this.game = game;
   }
 
+  GameController.prototype.startNewGame = function() {
+    gameController.game.startGame();
+  };
+
   exports.GameController = GameController;
 })(this);
