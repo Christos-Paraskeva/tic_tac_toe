@@ -23,12 +23,23 @@ describe('GameController', function() {
     });
   });
 
-  describe('Calls game model', function() {
+  // describe('Calls game model', function() {
+  //
+  //   it("when starting a new game", function() {
+  //     var startGame = spyOn(gameController.game, 'startGame').and.callThrough();
+  //     var resetGame = spyOn(gameController, '_resetGame').and.callThrough();
+  //     gameController.startNewGame();
+  //     expect(resetGame).toHaveBeenCalled();
+  //     expect(startGame).toHaveBeenCalled();
+  //   });
+  // });
 
-    it("when starting a new game", function() {
-      var startGame = spyOn(gameController.game, 'startGame').and.callThrough();
-      gameController.startNewGame();
-      expect(startGame).toHaveBeenCalled();
-    });
-  });
+  // describe('Functionality', function() {
+  //
+  //   it("receives a new game model when starting a new game", function() {
+  //     var resetGame = spyOn(gameController, '_resetGame').and.callThrough();
+  //     gameController.startNewGame();
+  //     expect(resetGame).toHaveBeenCalled();
+  //   });
+  // });
 });

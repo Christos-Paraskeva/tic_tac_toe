@@ -5,7 +5,15 @@
   }
 
   GameController.prototype.startNewGame = function() {
-    gameController.game.startGame();
+    this.game.startGame();
+    console.log(this.game.playerOne.currentTurn)
+
+    this._resetGame();
+    console.log(this.game.playerOne.currentTurn)
+  };
+
+  GameController.prototype._resetGame = function() {
+    this.game = new Game();
   };
 
   exports.GameController = GameController;
