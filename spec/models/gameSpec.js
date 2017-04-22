@@ -12,20 +12,20 @@ describe('Game', function() {
 
   describe('When initialized', function() {
 
-    it("receives a player 1", function() {
-        expect(game.player1 instanceof Player).toBe(true);
+    it("receives a player one", function() {
+        expect(game.playerOne instanceof Player).toBe(true);
     });
 
-    it("receives a player 2", function() {
-        expect(game.player2 instanceof Player).toBe(true);
+    it("receives a player two", function() {
+        expect(game.playerTwo instanceof Player).toBe(true);
     });
 
     it("player1 is initialized with 'X'", function() {
-      expect(game.player1.symbol).toEqual('X');
+      expect(game.playerOne.symbol).toEqual('X');
     });
 
     it("player2 is initialized with 'O'", function() {
-      expect(game.player2.symbol).toEqual('O');
+      expect(game.playerTwo.symbol).toEqual('O');
     });
 
     it("recieves a grid", function(){
@@ -39,12 +39,12 @@ describe('Game', function() {
         this.structure = resetGrid();
       }
 
-      var game = new Game(player1 = new PlayerDouble('X'), player2 = new PlayerDouble('O'), grid = new GridDouble() );
+      var game = new Game(playerOne = new PlayerDouble('X'), playerTwo = new PlayerDouble('O'), grid = new GridDouble() );
 
-      it("sets the current turn to player 1", function() {
+      it("sets the current turn to player one", function() {
         game.startGame();
-        expect(game.player1.currentTurn).toEqual(true);
-        expect(game.player2.currentTurn).toEqual(false);
+        expect(game.playerOne.currentTurn).toEqual(true);
+        expect(game.playerTwo.currentTurn).toEqual(false);
       });
     });
   });
@@ -63,21 +63,21 @@ describe('Game', function() {
   describe('When making a move', function() {
 
     beforeEach(function() {
-      game.player1.movesMade = [];
-      game.player2.movesMade = [];
+      game.playerOne.movesMade = [];
+      game.playerTwo.movesMade = [];
       game.grid.structure = resetGrid();
       game.startGame();
       });
 
-    it("allows player1 to make a move", function() {
+    it("allows player one to make a move", function() {
       game.makeMove('M2');
-      expect(game.player1.movesMade).toEqual(['M2']);
+      expect(game.playerOne.movesMade).toEqual(['M2']);
     });
 
-    it("allows player2 to make a move after player1", function() {
+    it("allows player two to make a move after player1", function() {
       game.makeMove('M2');
       game.makeMove('L3');
-      expect(game.player2.movesMade).toEqual(['L3']);
+      expect(game.playerTwo.movesMade).toEqual(['L3']);
     });
 
     it("allows both players to make two moves each", function() {
@@ -85,13 +85,13 @@ describe('Game', function() {
       game.makeMove('L3');
       game.makeMove('M3');
       game.makeMove('R1');
-      expect(game.player1.movesMade).toEqual(['M2', 'M3']);
-      expect(game.player2.movesMade).toEqual(['L3', 'R1']);
+      expect(game.playerOne.movesMade).toEqual(['M2', 'M3']);
+      expect(game.playerTwo.movesMade).toEqual(['L3', 'R1']);
     });
 
     it("associates that move with the specific player", function() {
       game.makeMove('M2');
-      expect(game.player1.movesMade).toEqual(['M2']);
+      expect(game.playerOne.movesMade).toEqual(['M2']);
     });
 
     it("declares winner if player completes a winning combination after a move", function(){

@@ -1,8 +1,8 @@
 (function(exports) {
 
-  function Game(player1 = new Player('X'), player2 = new Player('O'), grid = new Grid()) {
-    this.player1 = player1;
-    this.player2 = player2;
+  function Game(playerOne = new Player('X'), playerTwo = new Player('O'), grid = new Grid()) {
+    this.playerOne = playerOne;
+    this.playerTwo = playerTwo;
     this.grid = grid;
     this.currentMoveIndex;
     this.winningCombinationRules = [['L1', 'M2', 'M3'],
@@ -16,7 +16,7 @@
   }
 
   Game.prototype.startGame = function() {
-    this.player1.currentTurn = true;
+    this.playerOne.currentTurn = true;
   };
 
   Game.prototype.makeMove = function(move) {
@@ -24,7 +24,7 @@
 
     if (this._isValidMove(move) === true) {
       this._storeMove(whichPlayerMove, move);
-      this._markChosenMovePosition(this.currentMoveIndex, this.player1.symbol);
+      this._markChosenMovePosition(this.currentMoveIndex, this.playerOne.symbol);
       this._isWinner();
       }
     else {
@@ -33,22 +33,22 @@
   };
 
   Game.prototype._whichPlayerMove = function () {
-    if (this.player1.currentTurn === true) {
+    if (this.playerOne.currentTurn === true) {
       this._switchPlayerTurn(1);
-      return this.player1;
+      return this.playerOne;
     }
-    else if (this.player2.currentTurn === true) {
+    else if (this.playerTwo.currentTurn === true) {
       this._switchPlayerTurn(2);
-      return this.player2;
+      return this.playerTwo;
     }
   };
 
   Game.prototype._switchPlayerTurn = function(currentPlayer) {
     if (currentPlayer === 1) {
-      this.player1.currentTurn = false; this.player2.currentTurn = true;
+      this.playerOne.currentTurn = false; this.playerTwo.currentTurn = true;
     }
     else {
-      this.player1.currentTurn = true; this.player2.currentTurn = false;
+      this.playerOne.currentTurn = true; this.playerTwo.currentTurn = false;
     }
   };
 
@@ -71,7 +71,7 @@
 
   Game.prototype._isWinner = function() {
     for (var i=0, iLen=this.winningCombinationRules.length; i<iLen; i++) {
-      if ((this.winningCombinationRules[i].sort().join() === this.player1.movesMade.sort().join()) === true) {
+      if ((this.winningCombinationRules[i].sort().join() === this.playerOne.movesMade.sort().join()) === true) {
         this._endGame();
       }
     }
