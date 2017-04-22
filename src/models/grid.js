@@ -5,6 +5,6 @@
                        'L2', 'M2', 'R2',
                        'L3', 'M3', 'R3' ];
   }
-
+  
   exports.Grid = Grid;
 })(this);

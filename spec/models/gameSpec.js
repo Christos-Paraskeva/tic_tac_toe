@@ -1,6 +1,11 @@
 describe('Game', function() {
   var game = new Game();
 
+  function PlayerDouble() {
+    this.currentTurn = false;
+    this.movesMade = [];
+  }
+
   it("exists", function() {
     expect(game).toBeDefined();
   });
@@ -30,12 +35,13 @@ describe('Game', function() {
 
     describe('When starting a new game', function() {
 
-      function PlayerDouble() {
-        this.currentTurn = false;
-        this.movesMade = [];
+      function GridDouble() {
+        this.structure = [ 'L1', 'M1', 'R1',
+                           'L2', 'M2', 'R2',
+                           'L3', 'M3', 'R3' ];
       }
 
-      var game = new Game(player1 = new PlayerDouble('X'), player2 = new PlayerDouble('O') );
+      var game = new Game(player1 = new PlayerDouble('X'), player2 = new PlayerDouble('O'), grid = new GridDouble() );
 
       it("sets the current turn to player 1", function() {
         game.startGame();
@@ -47,20 +53,27 @@ describe('Game', function() {
 
   describe('When making a move', function() {
 
+    beforeEach(function() {
+      game.player1.movesMade = [];
+      game.grid.structure = [ 'L1', 'M1', 'R1',
+                              'L2', 'M2', 'R2',
+                              'L3', 'M3', 'R3' ];
+      });
+
     it("it associates that move with the specific player", function() {
       game.makeMove('M2');
       expect(game.player1.movesMade).toEqual(['M2']);
     });
 
-    // it("makes that move unavailable in the grid", function() {
-    //     game.makeMove();
-    //   expect(game.this.grid).toBeDefined();
-    // });
-
     describe('Edge cases', function() {
 
-      it("throws error if make an invalid move", function() {
+      it("throws error if make an invalid move request", function() {
         expect(function() {game.makeMove('X2')}).toThrow("Invalid Move");
+      });
+
+      it("makes valid move unavailable to be selected more than once", function() {
+        game.makeMove('M2');
+        expect(function() {game.makeMove('M2')}).toThrow("Invalid Move");
       });
     });
   });
