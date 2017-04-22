@@ -64,10 +64,32 @@ describe('Game', function() {
 
     beforeEach(function() {
       game.player1.movesMade = [];
+      game.player2.movesMade = [];
       game.grid.structure = resetGrid();
+      game.startGame();
       });
 
-    it("it associates that move with the specific player", function() {
+    it("allows player1 to make a move", function() {
+      game.makeMove('M2');
+      expect(game.player1.movesMade).toEqual(['M2']);
+    });
+
+    it("allows player2 to make a move after player1", function() {
+      game.makeMove('M2');
+      game.makeMove('L3');
+      expect(game.player2.movesMade).toEqual(['L3']);
+    });
+
+    it("allows both players to make two moves each", function() {
+      game.makeMove('M2');
+      game.makeMove('L3');
+      game.makeMove('M3');
+      game.makeMove('R1');
+      expect(game.player1.movesMade).toEqual(['M2', 'M3']);
+      expect(game.player2.movesMade).toEqual(['L3', 'R1']);
+    });
+
+    it("associates that move with the specific player", function() {
       game.makeMove('M2');
       expect(game.player1.movesMade).toEqual(['M2']);
     });
@@ -75,7 +97,9 @@ describe('Game', function() {
     it("declares winner if player completes a winning combination after a move", function(){
       spyOn(window, 'alert');
       game.makeMove('L1');
+      game.makeMove('R2');
       game.makeMove('M2');
+      game.makeMove('R1');
       game.makeMove('R3');
       expect(window.alert).toHaveBeenCalledWith('You are the winner!');
     });

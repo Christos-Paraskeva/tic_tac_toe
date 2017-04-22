@@ -20,13 +20,35 @@
   };
 
   Game.prototype.makeMove = function(move) {
+    var whichPlayerMove = this._whichPlayerMove();
+
     if (this._isValidMove(move) === true) {
-      this._storeMove(this.player1, move);
+      this._storeMove(whichPlayerMove, move);
       this._markChosenMovePosition(this.currentMoveIndex, this.player1.symbol);
       this._isWinner();
       }
     else {
       throw "Invalid Move";
+    }
+  };
+
+  Game.prototype._whichPlayerMove = function () {
+    if (this.player1.currentTurn === true) {
+      this._switchPlayerTurn(1);
+      return this.player1;
+    }
+    else if (this.player2.currentTurn === true) {
+      this._switchPlayerTurn(2);
+      return this.player2;
+    }
+  };
+
+  Game.prototype._switchPlayerTurn = function(currentPlayer) {
+    if (currentPlayer === 1) {
+      this.player1.currentTurn = false; this.player2.currentTurn = true;
+    }
+    else {
+      this.player1.currentTurn = true; this.player2.currentTurn = false;
     }
   };
 
