@@ -104,7 +104,7 @@ describe('Game', function() {
       expect(window.alert).toHaveBeenCalledWith('Player One is the winner!');
     });
 
-    it("declares player one as winner when completing a winning combination", function(){
+    it("declares player two as winner when completing a winning combination", function(){
       spyOn(window, 'alert');
       game.makeMove('R2');
       game.makeMove('L1');
