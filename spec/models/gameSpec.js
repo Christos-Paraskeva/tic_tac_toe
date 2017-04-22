@@ -104,6 +104,17 @@ describe('Game', function() {
       expect(window.alert).toHaveBeenCalledWith('Player One is the winner!');
     });
 
+    it("declares player one as winner when completing a winning combination", function(){
+      spyOn(window, 'alert');
+      game.makeMove('R2');
+      game.makeMove('L1');
+      game.makeMove('R1');
+      game.makeMove('M2');
+      game.makeMove('L2');
+      game.makeMove('R3');
+      expect(window.alert).toHaveBeenCalledWith('Player Two is the winner!');
+    });
+
     describe('Edge cases', function() {
 
       it("throws error if make an invalid move request", function() {

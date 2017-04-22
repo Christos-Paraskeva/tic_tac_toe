@@ -81,6 +81,9 @@
     if (player === this.playerOne) {
       alert("Player One is the winner!");
     }
+    else {
+      alert("Player Two is the winner!");
+    }
   };
 
   exports.Game = Game;
