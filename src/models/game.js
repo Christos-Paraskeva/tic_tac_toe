@@ -72,12 +72,12 @@
   Game.prototype._isWinner = function(player) {
     for (var i=0, iLen=this.winningCombinationRules.length; i<iLen; i++) {
       if ((this.winningCombinationRules[i].sort().join() === player.movesMade.sort().join()) === true) {
-        this._endGame(player);
+        this._declareWinner(player);
       }
     }
   };
 
-  Game.prototype._endGame = function(player) {
+  Game.prototype._declareWinner = function(player) {
     if (player === this.playerOne) {
       alert("Player One is the winner!");
     }
