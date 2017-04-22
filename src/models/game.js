@@ -32,6 +32,10 @@
     }
   };
 
+  Game.prototype.resetGame = function () {
+
+  };
+
   Game.prototype._whichPlayerMove = function () {
     if (this.playerOne.currentTurn === true) {
       this._switchPlayerTurn(1);
@@ -84,6 +88,8 @@
     else {
       alert("Player Two is the winner!");
     }
+
+    this.resetGame();
   };
 
   exports.Game = Game;

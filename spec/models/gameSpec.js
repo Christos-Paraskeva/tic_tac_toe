@@ -114,6 +114,16 @@ describe('Game', function() {
       game.makeMove('R3');
       expect(window.alert).toHaveBeenCalledWith('Player Two is the winner!');
     });
+
+    it("game restarts after declaring a winner", function(){
+      spyOn(game, 'resetGame');
+      game.makeMove('L1');
+      game.makeMove('R2');
+      game.makeMove('M2');
+      game.makeMove('R1');
+      game.makeMove('R3');
+      expect(game.resetGame).toHaveBeenCalled();
+    });
   });
 });
 
