@@ -72,6 +72,14 @@ describe('Game', function() {
       expect(game.player1.movesMade).toEqual(['M2']);
     });
 
+    it("declares winner if player completes a winning combination after a move", function(){
+      spyOn(window, 'alert');
+      game.makeMove('L1');
+      game.makeMove('M2');
+      game.makeMove('R3');
+      expect(window.alert).toHaveBeenCalledWith('You are the winner!');
+    });
+
     describe('Edge cases', function() {
 
       it("throws error if make an invalid move request", function() {

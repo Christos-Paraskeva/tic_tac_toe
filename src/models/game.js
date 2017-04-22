@@ -23,6 +23,7 @@
     if (this._isValidMove(move) === true) {
       this._storeMove(this.player1, move);
       this._markChosenMovePosition(this.currentMoveIndex, this.player1.symbol);
+      this._isWinner();
       }
     else {
       throw "Invalid Move";
@@ -44,6 +45,21 @@
 
   Game.prototype._markChosenMovePosition = function(indexPosition, playerSymbol) {
     this.grid.structure.splice(indexPosition, 1, playerSymbol);
+  };
+
+  Game.prototype._isWinner = function() {
+    for (var i=0, iLen=this.winningCombinationRules.length; i<iLen; i++) {
+      if (this.winningCombinationRules[i].sort() === this.player1.movesMade.sort()); {
+        console.log('winningcomborules', this.winningCombinationRules[i].sort())
+        console.log('movesmade', this.player1.movesMade.sort())
+        console.log('true/false',this.winningCombinationRules[i].sort() === this.player1.movesMade.sort())
+        this._endGame();
+      }
+    }
+  };
+
+  Game.prototype._endGame = function() {
+    // alert("You are the winner!");
   };
 
   exports.Game = Game;
