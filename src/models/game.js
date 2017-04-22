@@ -20,11 +20,11 @@
   };
 
   Game.prototype.makeMove = function(move) {
-    var whichPlayerMove = this._whichPlayerMove();
 
     if (this._isValidMove(move) === true) {
+      var whichPlayerMove = this._whichPlayerMove();
       this._storeMove(whichPlayerMove, move);
-      this._markChosenMovePosition(this.currentMoveIndex, this.playerOne.symbol);
+      this._markChosenMovePosition(this.currentMoveIndex, whichPlayerMove.symbol);
       this._isWinner(whichPlayerMove);
       }
     else {

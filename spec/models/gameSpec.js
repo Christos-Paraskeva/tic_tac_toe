@@ -114,17 +114,33 @@ describe('Game', function() {
       game.makeMove('R3');
       expect(window.alert).toHaveBeenCalledWith('Player Two is the winner!');
     });
+  });
+});
 
-    describe('Edge cases', function() {
+describe('Edge cases', function() {
 
-      it("throws error if make an invalid move request", function() {
-        expect(function() {game.makeMove('X2')}).toThrow("Invalid Move");
-      });
+  function PlayerDouble() {
+    this.currentTurn = false;
+    this.movesMade = [];
+  }
 
-      it("makes valid move unavailable to be selected more than once", function() {
-        game.makeMove('M2');
-        expect(function() {game.makeMove('M2')}).toThrow("Invalid Move");
-      });
-    });
+  function GridDouble() {
+    this.structure = resetGrid();
+  }
+
+  var game = new Game(playerOne = new PlayerDouble('X'), playerTwo = new PlayerDouble('O'), grid = new GridDouble() );
+
+  it("throws error if player one makes an invalid move request", function() {
+    game.startGame();
+    expect(function() {game.makeMove('X2')}).toThrow("Invalid Move");
+  });
+
+  it("allows player one to retake move after invalid move", function() {
+    expect(game.playerOne.currentTurn).toEqual(true);
+  });
+
+  it("makes valid move unavailable to be selected more than once", function() {
+    game.makeMove('M2');
+    expect(function() {game.makeMove('M2')}).toThrow("Invalid Move");
   });
 });

@@ -2,7 +2,7 @@
 
   function Player(symbol) {
     this.symbol = symbol;
-    this.currentTurn = false
+    this.currentTurn = false;
     this.movesMade = [];
   }
 
