@@ -5,6 +5,14 @@
     this.player2 = player2;
     this.grid = grid;
     this.currentMoveIndex;
+    this.winningCombinationRules = [['L1', 'M2', 'M3'],
+                                    ['L2', 'M2', 'R3'],
+                                    ['L3', 'M3', 'R3'],
+                                    ['L1', 'L2', 'L3'],
+                                    ['M1', 'M2', 'M3'],
+                                    ['R1', 'R2', 'R3'],
+                                    ['L1', 'M2', 'R3'],
+                                    ['L3', 'M2', 'R1']];
   }
 
   Game.prototype.startGame = function() {
