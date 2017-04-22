@@ -139,6 +139,16 @@ describe('Edge cases', function() {
     expect(game.playerOne.currentTurn).toEqual(true);
   });
 
+  it("throws error if player two makes an invalid move request", function() {
+    game.startGame();
+    game.makeMove('M1');
+    expect(function() {game.makeMove('X2')}).toThrow("Invalid Move");
+  });
+
+  it("allows player two to retake move after invalid move", function() {
+    expect(game.playerTwo.currentTurn).toEqual(true);
+  });
+
   it("makes valid move unavailable to be selected more than once", function() {
     game.makeMove('M2');
     expect(function() {game.makeMove('M2')}).toThrow("Invalid Move");
