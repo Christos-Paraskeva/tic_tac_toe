@@ -36,9 +36,7 @@ describe('Game', function() {
     describe('When starting a new game', function() {
 
       function GridDouble() {
-        this.structure = [ 'L1', 'M1', 'R1',
-                           'L2', 'M2', 'R2',
-                           'L3', 'M3', 'R3' ];
+        this.structure = resetGrid();
       }
 
       var game = new Game(player1 = new PlayerDouble('X'), player2 = new PlayerDouble('O'), grid = new GridDouble() );
@@ -55,9 +53,7 @@ describe('Game', function() {
 
     beforeEach(function() {
       game.player1.movesMade = [];
-      game.grid.structure = [ 'L1', 'M1', 'R1',
-                              'L2', 'M2', 'R2',
-                              'L3', 'M3', 'R3' ];
+      game.grid.structure = resetGrid();
       });
 
     it("it associates that move with the specific player", function() {
