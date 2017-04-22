@@ -6,6 +6,7 @@
     this.grid = grid;
     this.currentMoveIndex;
     this.winningCombinationRules = rule.winningCombinationRules;
+    this.startGame();
   }
 
   Game.prototype.startGame = function() {

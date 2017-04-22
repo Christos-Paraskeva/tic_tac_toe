@@ -36,6 +36,9 @@ describe('Game', function() {
       expect(game.winningCombinationRules).toEqual(winningCombinationRules());
     });
 
+    it("starts a game", function () {
+      expect(game.playerOne.currentTurn).toEqual(true);
+    });
 
     describe('When starting a new game', function() {
 
