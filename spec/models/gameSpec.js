@@ -20,11 +20,11 @@ describe('Game', function() {
         expect(game.playerTwo instanceof Player).toBe(true);
     });
 
-    it("player1 is initialized with 'X'", function() {
+    it("player one is initialized with 'X'", function() {
       expect(game.playerOne.symbol).toEqual('X');
     });
 
-    it("player2 is initialized with 'O'", function() {
+    it("player one is initialized with 'O'", function() {
       expect(game.playerTwo.symbol).toEqual('O');
     });
 
@@ -94,14 +94,14 @@ describe('Game', function() {
       expect(game.playerOne.movesMade).toEqual(['M2']);
     });
 
-    it("declares winner if player completes a winning combination after a move", function(){
+    it("declares player one as winner when completing a winning combination", function(){
       spyOn(window, 'alert');
       game.makeMove('L1');
       game.makeMove('R2');
       game.makeMove('M2');
       game.makeMove('R1');
       game.makeMove('R3');
-      expect(window.alert).toHaveBeenCalledWith('You are the winner!');
+      expect(window.alert).toHaveBeenCalledWith('Player One is the winner!');
     });
 
     describe('Edge cases', function() {

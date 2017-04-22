@@ -25,7 +25,7 @@
     if (this._isValidMove(move) === true) {
       this._storeMove(whichPlayerMove, move);
       this._markChosenMovePosition(this.currentMoveIndex, this.playerOne.symbol);
-      this._isWinner();
+      this._isWinner(whichPlayerMove);
       }
     else {
       throw "Invalid Move";
@@ -69,16 +69,18 @@
     this.grid.structure.splice(indexPosition, 1, playerSymbol);
   };
 
-  Game.prototype._isWinner = function() {
+  Game.prototype._isWinner = function(player) {
     for (var i=0, iLen=this.winningCombinationRules.length; i<iLen; i++) {
-      if ((this.winningCombinationRules[i].sort().join() === this.playerOne.movesMade.sort().join()) === true) {
-        this._endGame();
+      if ((this.winningCombinationRules[i].sort().join() === player.movesMade.sort().join()) === true) {
+        this._endGame(player);
       }
     }
   };
 
-  Game.prototype._endGame = function() {
-    alert("You are the winner!");
+  Game.prototype._endGame = function(player) {
+    if (player === this.playerOne) {
+      alert("Player One is the winner!");
+    }
   };
 
   exports.Game = Game;
