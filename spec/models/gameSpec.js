@@ -49,6 +49,17 @@ describe('Game', function() {
     });
   });
 
+  describe('Winning combination rules', function() {
+
+    it("exists", function(){
+      expect(game.winningCombinationRules).toBeDefined();
+    });
+
+    it("contains the correct winning combinations", function() {
+      expect(game.winningCombinationRules).toEqual(winningCombinationRules());
+    });
+  });
+
   describe('When making a move', function() {
 
     beforeEach(function() {
@@ -70,13 +81,6 @@ describe('Game', function() {
       it("makes valid move unavailable to be selected more than once", function() {
         game.makeMove('M2');
         expect(function() {game.makeMove('M2')}).toThrow("Invalid Move");
-      });
-    });
-
-    describe('Winning combination rules', function() {
-
-      it("exist", function() {
-        expect(game.winningCombinationRules).toEqual([['L1', 'M2', 'M3'], ['L2', 'M2', 'R3'], ['L3', 'M3', 'R3'], ['L1', 'L2', 'L3'], ['M1', 'M2', 'M3'], ['R1', 'R2', 'R3'], ['L1', 'M2', 'R3'], ['L3', 'M2', 'R1']]);
       });
     });
   });
