@@ -13,7 +13,7 @@
 
   Game.prototype.makeMove = function(move) {
     if (this._isValidMove(move) === true) {
-      this.player1.movesMade.push(move);
+      this._storeMove(this.player1, move);
       this.grid.structure.splice(this.currentMoveIndex, 1, 'X');
       }
     else {
@@ -28,6 +28,10 @@
         return true;
       }
     }
+  };
+
+  Game.prototype._storeMove = function(currentPlayer, move) {
+    currentPlayer.movesMade.push(move);
   };
 
   exports.Game = Game;
